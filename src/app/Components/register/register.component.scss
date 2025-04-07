@@ -1,0 +1,66 @@
+.form-container {
+    background: #fff;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 6rem auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  .form-title {
+    text-align: left;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  
+    label {
+      width: 150px;
+      font-weight: 500;
+    }
+  
+    .full-width {
+      flex: 1;
+    }
+  
+    .profile-images,
+    .departments,
+    .date-selects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .profile-radio img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+  }
+  
+  .short-width {
+    width: 300px;
+  }
+  
+  .date-selects-row {
+    display: flex;
+    gap: 12px;
+  
+    .date-select {
+      width: 100px;
+    }
+  }
+  button{
+    border-radius: 0;
+  }

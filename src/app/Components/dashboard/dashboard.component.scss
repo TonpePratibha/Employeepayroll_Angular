@@ -1,0 +1,181 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e0e0e0;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #b5c224;
+      padding: 8px;
+      height: 30px;
+      width: 30px;
+      border-radius: 4px;
+
+      .logo-icon {
+        font-size: 20px;
+        color: #5e5e5e;
+      }
+
+      .dollar-sign {
+        color: #5e5e5e;
+        font-weight: bold;
+        margin-left: 4px;
+      }
+    }
+
+    .text-block {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      font-weight: bold;
+
+      .top-text {
+        color: #77a716;
+        font-size: 1.3rem;
+      }
+
+      .bottom-text {
+        color: #5e5e5e;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .breadcrumb {
+    font-size: 0.95rem;
+    color: #999;
+    font-weight: 500;
+  }
+}
+
+
+body {
+  background-color: #eceff3d9; // match XD screenshot background
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.headerrow {
+  background-color:  #3b4351  !important; // dark grey
+}
+
+.header-column {
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 14px;
+}
+
+
+.container {
+    padding: 60px;
+    background-color: gainsboro;
+  }
+ 
+
+  .title {
+    font-weight: bold;
+    color: #454343;
+    margin-bottom: 16px;
+  }
+ 
+  
+  
+  
+  .image{
+     border-radius: 20px;
+  }
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  
+  .full-width-table {
+    width: 100%;
+  }
+  
+  // mat-chip{
+  //   background-color: #c0ce59 !important;
+    
+
+  // }
+  mat-chip {
+    background-color: #e7f39b !important;
+    color: #333;
+    font-weight: 500;
+    font-size: 13px;
+    border-radius: 20px;
+  }
+  
+
+
+ 
+  
+
+
+
+  
+  .avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  
+  .employee-container {
+     margin-top: 2rem;
+    padding: 20px;
+    
+  
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+  
+      .title {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+     
+  
+      .search-add {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      
+        .btn {
+          background-color: #77a716; 
+          color: white;
+          /* White text */
+          padding: 10px 20px; 
+           border-radius: 0; 
+         
+          
+        }
+  
+        .search-box {
+          width: 250px;
+          padding: 0.5rem;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+        }
+      }
+    }
+  }
+  
+ 
