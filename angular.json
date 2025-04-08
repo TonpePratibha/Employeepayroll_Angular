@@ -101,6 +101,7 @@
               {
                 "glob": "**/*",
                 "input": "public"
+                
               }
             ],
             "styles": [
@@ -116,4 +117,5 @@
   "cli": {
     "analytics": "6b1f2126-8c81-46e3-bc76-6ce6cfec6cd6"
   }
+
 }

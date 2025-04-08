@@ -1,17 +1,87 @@
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+  
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+  
+      .logo-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #b5c224;
+        padding: 8px;
+        height: 30px;
+        width: 30px;
+        border-radius: 4px;
+  
+        .logo-icon {
+          font-size: 20px;
+          color: #5e5e5e;
+        }
+  
+        .dollar-sign {
+          color: #5e5e5e;
+          font-weight: bold;
+          margin-left: 4px;
+        }
+      }
+  
+      .text-block {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+        font-weight: bold;
+  
+        .top-text {
+          color: #77a716;
+          font-size: 1.3rem;
+        }
+  
+        .bottom-text {
+          color: #5e5e5e;
+          font-size: 1.3rem;
+        }
+      }
+    }
+  
+    .breadcrumb {
+      font-size: 0.95rem;
+      color: #999;
+      font-weight: 500;
+    }
+  }
+  
+  
+  body {
+    background-color: #eceff3d9; 
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+
+
+
 .form-container {
     background: #fff;
-    padding: 2rem;
+    padding: 1rem;
     max-width: 800px;
-    margin: 6rem auto;
+    margin: 1rem auto;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
+max-height: 90vh;
   }
   
   .form-title {
     text-align: left;
     margin-bottom: 2rem;
     font-weight: 600;
+    color:#5e5e5e
   }
   
   .form-row {
@@ -43,11 +113,7 @@
     }
   }
   
-  .form-actions {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 2rem;
-  }
+
   
   .short-width {
     width: 300px;
@@ -56,11 +122,54 @@
   .date-selects-row {
     display: flex;
     gap: 12px;
-  
+    
+
     .date-select {
       width: 100px;
+      
+    
     }
   }
-  button{
-    border-radius: 0;
+  
+  .button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  
+    button {
+      background-color: #d3d3d3; 
+      border: none;
+      border-radius: 6px;
+      padding: 10px 24px;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  
+    .submit-btn:hover {
+      background-color: #4CAF50; 
+      color: white;
+    }
+  
+    .reset-btn:hover,
+    .cancel-btn:hover {
+      background-color: #000; 
+      color: white;
+    }
+  
+    .right-buttons {
+      display: flex;
+      gap: 1rem;
+    }
   }
+  mat-option{
+    background-color: white !important;
+  }
+  body {
+    background-color: #eceff3d9; // match XD screenshot background
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  

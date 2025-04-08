@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { EmployeeService } from '../../Services/Employee/employee.service';
 
 @Component({
   selector: 'app-register',
@@ -6,12 +8,12 @@ import { Component } from '@angular/core';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
   profileImages = [
-    '/assets/images/avatar1.jpg',
-    '/assets/images/avatar2.jpg',
-    '/assets/images/avatar1.jpg',
-    '/assets/images/avatar2.jpg',
+    '/images/avatar2.jpg',
+    '/images/avatar1.jpg',
+    '/images/avatar3.jpg',
+    '/images/avatar4.jpg',
     
   ];
 
@@ -33,4 +35,107 @@ export class RegisterComponent {
     'Dec',
   ];
   years = Array.from({ length: 30 }, (_, i) => 2000 + i);
+
+
+
+  selectedDate = { day: '', month: '', year: '' };
+  RegisterForm!:FormGroup;
+  constructor(private employee:EmployeeService,private formbuilder:FormBuilder){}
+
+  ngOnInit(): void {
+    this.RegisterForm=this.formbuilder.group({
+     Name:[''],
+     Image:[''],
+     Gender:[''],
+     Department:[[]],
+     Salary:[''],
+     StartDate:[''],
+     Note:['']
+
+    })
+  }
+ 
+
+
+
+  onDepartmentChange(event: any, dept: string) {
+    if (event.checked) {
+      this.RegisterForm.get('Department')?.setValue(dept);
+    } else {
+      const current = this.RegisterForm.get('Department')?.value;
+      if (current === dept) {
+        this.RegisterForm.get('Department')?.setValue('');
+      }
+    }
+  }
+  
+
+  updateStartDate(value: string | number, type: 'day' | 'month' | 'year') {
+    this.selectedDate[type] = value.toString();
+
+    const { day, month, year } = this.selectedDate;
+    if (day && month && year) {
+      this.RegisterForm.patchValue({ StartDate: `${day}-${month}-${year}` });
+    }
+  }
+
+  Register() {
+    const reqData = this.RegisterForm.value;
+    this.employee.Register(reqData).subscribe({
+      next: (res) => {
+        console.log("Registration Successful:", res);
+        alert("User Registered Successfully!");
+      },
+      // error: (err) => {
+      //   console.error("Registration Failed:", err);
+      //   alert("Error in Registration: " + err.message);
+      error: (err) => {
+        if (err.error?.errors) {
+          console.log('Validation Errors:');
+          for (let field in err.error.errors) {
+            console.log(`${field}: ${err.error.errors[field]}`);
+          }
+        } else {
+          console.error('Other Error:', err);
+        }
+      }
+      
+      }
+    );
+  }
 }
+
+
+
+
+
+
+ 
+ 
+//  Register() {
+//    let reqData = {
+//      Name: this.RegisterForm.value.Name,
+//      Image: this.RegisterForm.value.Image,
+//      Gender: this.RegisterForm.value.Gender,
+//      Department: this.RegisterForm.value.Department,
+//      Salary: this.RegisterForm.value.Salary,
+//      StartDate:this.RegisterForm.value.StartDate,
+//      Note:this.RegisterForm.value.Note
+//    };
+ 
+//    this.employee.Register(reqData).subscribe({
+//      next: (res) => {
+//        console.log("Registration Successful:", res);
+//        alert("User Registered Successfully!");
+//      },
+//      error: (err) => {
+//        console.error(" Registration Failed:", err);
+//        alert("Error in Registration: " + err.message);
+//      }
+//    });
+//  }
+
+
+
+
+

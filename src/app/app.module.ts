@@ -15,7 +15,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { MatCardModule } from '@angular/material/card';
     MatRadioModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
   providers: [
