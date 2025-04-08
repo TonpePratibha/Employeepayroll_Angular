@@ -17,4 +17,31 @@ export class EmployeeService {
     };
     return this.http.PostService('https://localhost:7138/api/employee/register', reqData, headers);
   }
+
+
+  getEmployees(){
+    let headers={
+      headers:new HttpHeaders({
+        'Content-Type': 'application/json',
+       
+  
+      })
+  
+    };
+    return this.http.getService("https://localhost:7138/api/employee",headers);
+  }
+
+  deleteEmployee(id: number) {
+    let headers = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.deleteService(`https://localhost:7138/api/employee/${id}`, headers);
+  }
+  
+
 }
+
+
+

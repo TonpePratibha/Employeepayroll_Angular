@@ -8,12 +8,6 @@ export class HttpService {
 
   constructor(private httpClient: HttpClient) {}
 
-
-  // PostService(reqUrl: string, reqData: any,  httpOptions: any = {}) {
-  //   console.log("POST Request URL:", reqUrl); 
-  //   console.log("POST Request Data:", reqData); 
-  //   return this.httpClient.post(reqUrl, reqData? httpOptions : {});
-  // }
   PostService(reqUrl: string, reqData: any, httpOptions: any = {}) {
        console.log("POST Request URL:", reqUrl); 
   console.log("POST Request Data:", reqData); 
@@ -22,9 +16,12 @@ export class HttpService {
   
 
   getService(url: string,httpOptions: any = {}) {
-    return this.httpClient.get(url ? httpOptions : {});
+    return this.httpClient.get(url,httpOptions );
   }
 
+  deleteService(url: string, httpOptions: any = {}) {
+    return this.httpClient.delete(url, httpOptions);
+  }
 
 
 

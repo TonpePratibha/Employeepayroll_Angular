@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeService } from '../../Services/Employee/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -40,7 +41,7 @@ export class RegisterComponent implements OnInit{
 
   selectedDate = { day: '', month: '', year: '' };
   RegisterForm!:FormGroup;
-  constructor(private employee:EmployeeService,private formbuilder:FormBuilder){}
+  constructor(private employee:EmployeeService,private formbuilder:FormBuilder, private router: Router){}
 
   ngOnInit(): void {
     this.RegisterForm=this.formbuilder.group({
@@ -85,10 +86,8 @@ export class RegisterComponent implements OnInit{
       next: (res) => {
         console.log("Registration Successful:", res);
         alert("User Registered Successfully!");
+        this.router.navigate(['/dashboard']);
       },
-      // error: (err) => {
-      //   console.error("Registration Failed:", err);
-      //   alert("Error in Registration: " + err.message);
       error: (err) => {
         if (err.error?.errors) {
           console.log('Validation Errors:');
@@ -111,29 +110,6 @@ export class RegisterComponent implements OnInit{
 
 
  
- 
-//  Register() {
-//    let reqData = {
-//      Name: this.RegisterForm.value.Name,
-//      Image: this.RegisterForm.value.Image,
-//      Gender: this.RegisterForm.value.Gender,
-//      Department: this.RegisterForm.value.Department,
-//      Salary: this.RegisterForm.value.Salary,
-//      StartDate:this.RegisterForm.value.StartDate,
-//      Note:this.RegisterForm.value.Note
-//    };
- 
-//    this.employee.Register(reqData).subscribe({
-//      next: (res) => {
-//        console.log("Registration Successful:", res);
-//        alert("User Registered Successfully!");
-//      },
-//      error: (err) => {
-//        console.error(" Registration Failed:", err);
-//        alert("Error in Registration: " + err.message);
-//      }
-//    });
-//  }
 
 
 
