@@ -10,6 +10,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    text-decoration: none;
+    color: inherit;
 
     .logo-box {
       display: flex;
@@ -59,6 +61,8 @@
 }
 
 
+
+
 body {
   background-color: #eceff3d9; // match XD screenshot background
   margin: 0;
@@ -76,7 +80,11 @@ body {
   font-size: 14px;
 }
 
-
+.search-box {
+  width: 200px;
+  margin-right: 10px;
+ 
+}
 .container {
     padding: 60px;
     background-color: gainsboro;

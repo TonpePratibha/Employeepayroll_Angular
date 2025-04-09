@@ -1,5 +1,5 @@
  <header class="app-header">
-    <div class="logo-container">
+    <div class="logo-container" (click)="goToDashboard()">
       <div class="logo-box">
         <mat-icon class="logo-icon">person</mat-icon>
         <span class="dollar-sign">$</span>
@@ -13,13 +13,25 @@
   </header>
 
   <form class="form-container" [formGroup]="RegisterForm" (ngSubmit)="Register()">
-    <h2 class="form-title">Employee Payroll Form</h2>
-  
+    <!-- <h2 class="form-title">Employee Payroll Form</h2> -->
+    <h2>{{ isEditMode ? 'Update Employee Details' : 'Employee Payroll Form' }}</h2>
+   
+    
     <div class="form-row">
       <label>Name</label>
+      <!-- <mat-form-field appearance="outline" class="short-width">
+        <input matInput placeholder="Enter name" formControlName="Name" />
+      </mat-form-field> -->
       <mat-form-field appearance="outline" class="short-width">
         <input matInput placeholder="Enter name" formControlName="Name" />
+        <mat-error *ngIf="RegisterForm.get('Name')?.hasError('required')">
+          Name is required
+        </mat-error>
+        <mat-error *ngIf="RegisterForm.get('Name')?.hasError('pattern')">
+          Name should not contain numbers
+        </mat-error>
       </mat-form-field>
+      
     </div>
   
     <div class="form-row">
@@ -33,18 +45,30 @@
           >
             <img [src]="img" alt="Profile" />
           </mat-radio-button>
+         
         </mat-radio-group>
+        <mat-error *ngIf="RegisterForm.get('Image')?.invalid && (RegisterForm.get('Image')?.touched || submitted)">
+          Please select a profile image
+        </mat-error>
       </div>
     </div>
+   
   
     <div class="form-row">
       <label>Gender</label>
       <mat-radio-group formControlName="Gender">
         <mat-radio-button value="male">Male</mat-radio-button>
         <mat-radio-button value="female">Female</mat-radio-button>
+       
+        
       </mat-radio-group>
+     
+      <mat-error *ngIf="RegisterForm.get('Gender')?.invalid && (RegisterForm.get('Gender')?.touched || submitted)">
+        Please select a gender
+      </mat-error>
     </div>
-  
+    
+
     <div class="form-row">
       <label>Department</label>
       <div class="departments">
@@ -54,6 +78,10 @@
           [checked]="RegisterForm.get('Department')?.value === dept">
           {{ dept }}
         </mat-checkbox>
+        <mat-error *ngIf="RegisterForm.get('Department')?.invalid && (RegisterForm.get('Department')?.touched || submitted)">
+          Please select a department
+        </mat-error>
+        
       </div>
     </div>
   
@@ -63,6 +91,10 @@
         <mat-select placeholder="Select Salary" formControlName="Salary">
           <mat-option *ngFor="let s of salaryOptions" [value]="s">{{ s }}</mat-option>
         </mat-select>
+        <mat-error *ngIf="RegisterForm.get('Salary')?.hasError('required')">
+          Please select a salary
+        </mat-error>
+        
       </mat-form-field>
     </div>
   
@@ -85,6 +117,10 @@
           <mat-select placeholder="Year" (selectionChange)="updateStartDate($event.value, 'year')">
             <mat-option *ngFor="let y of years" [value]="y">{{ y }}</mat-option>
           </mat-select>
+          <mat-error *ngIf="RegisterForm.get('StartDate')?.hasError('required')">
+            Please select a start date
+          </mat-error>
+          
         </mat-form-field>
       </div>
     </div>
@@ -93,14 +129,21 @@
       <label>Notes</label>
       <mat-form-field appearance="outline" class="full-width">
         <textarea matInput placeholder="Notes" formControlName="Note"></textarea>
+        <mat-error *ngIf="RegisterForm.get('Note')?.hasError('required')">
+          Note is required
+        </mat-error>
+        
       </mat-form-field>
     </div>
   
     <div class="button-wrapper">
       <button class="cancel-btn" type="button" routerLink="/dashboard">Cancel</button>
       <div class="right-buttons">
-        <button class="submit-btn" type="submit" >Submit</button>
-        <button class="reset-btn" type="button" >Reset</button>
+        <!-- <button class="submit-btn" type="submit" >Submit</button> -->
+        <button type="submit">
+          {{ isEditMode ? 'Update' : 'Submit' }}
+        </button>
+        <button class="reset-btn" type="button" (click)="resetForm()">Reset</button>
       </div>
     </div>
   </form>

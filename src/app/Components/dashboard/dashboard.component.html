@@ -1,7 +1,7 @@
 
   
 <header class="app-header">
-  <div class="logo-container">
+  <div class="logo-container" (click)="goToDashboard()">
     <div class="logo-box">
       <mat-icon class="logo-icon">person</mat-icon>
       <span class="dollar-sign">$</span>
@@ -23,8 +23,18 @@
         <h3 class="title">Employee Details</h3>
     
         <div class="search-add">
-          <!-- <input matInput placeholder="Search" class="search-box" /> -->
-          <mat-icon class="search-icon">search</mat-icon>
+          <mat-icon class="search-icon" (click)="toggleSearch()">search</mat-icon>
+          <input *ngIf="showSearch"
+          [(ngModel)]="searchText"
+          (input)="applyFilter()"
+          matInput
+          placeholder="Search"
+          class="search-box" />
+ 
+
+
+
+          <!-- <mat-icon class="search-icon">search</mat-icon> -->
           <button mat-raised-button routerLink='/register' class="btn">+ Add User</button>
         </div>
       </div>
@@ -50,7 +60,7 @@
         <th mat-header-cell *matHeaderCellDef class="header-column" > DEPARTMENT </th>
         <td mat-cell *matCellDef="let element">
           <mat-chip-listbox >
-            <mat-chip disabled-outline-color class="chip" *ngFor="let dep of element.department">{{ dep }}</mat-chip>
+            <mat-chip disabled-outline-color class="chip" *ngFor="let dep of [element.department]">{{ dep }}</mat-chip>
         </mat-chip-listbox>
         </td>
       </ng-container>
@@ -74,10 +84,12 @@
           <button mat-icon-button color="warn" (click)="deleteEmployee(element.id)">
             <mat-icon>delete</mat-icon>
           </button>
-          <button mat-icon-button color="accent">
+          <!-- <button mat-icon-button color="accent">
+            <mat-icon>edit</mat-icon>
+          </button> -->
+          <button mat-icon-button color="accent" [routerLink]="['/register', element.id]">
             <mat-icon>edit</mat-icon>
           </button>
-          
         </td>
       </ng-container>
   

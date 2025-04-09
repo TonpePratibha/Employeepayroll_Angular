@@ -24,6 +24,15 @@ export class HttpService {
   }
 
 
-
+  putService(reqUrl: string, reqData: any, httpOptions: any = {}) {
+    console.log("PUT Request URL:", reqUrl);
+    console.log("PUT Request Data:", reqData);
+    return this.httpClient.put(reqUrl, reqData, httpOptions);
+  }
+  
+  getServiceById(url: string, httpOptions: any = {}) {
+    return this.httpClient.get(url, httpOptions);
+  }
+  
 
 }
